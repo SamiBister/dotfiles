@@ -1,0 +1,29 @@
+---
+# tasks file for configure_zsh
+- name: Generate useraccounts Configuration
+  template:
+    src: accounts.j2
+    dest: ~/.zsh/accounts # If needed to write to the user's home directory
+  vars:
+      accounts: "{{ sensitive_envs }}"
+  when: sensitive_envs | length > 0
+
+- name: Generate zsh aliases
+  template:
+    src: alias.j2
+    dest: ~/.zsh/alias
+
+- name: Generate zsh funtions 
+  template:
+    src: functions.j2
+    dest: ~/.zsh/functions
+
+- name: Generate exports to environemtn
+  template:
+    src: exports.j2
+    dest: ~/.zsh/exports
+
+- name: Generate .zshrc Configuration
+  template:
+    src: main.j2
+    dest: ~/.zshrc 

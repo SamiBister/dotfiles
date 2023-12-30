@@ -1,0 +1,6 @@
+---
+# tasks file for install_oh_my_zsh
+- name: Include gantsign.oh-my-zsh
+  import_role:
+    name: gantsign.oh-my-zsh
+

@@ -1,0 +1,6 @@
+---
+# tasks file for setup_bookmarks
+- name: Copy boolmarks to tmp
+  ansible.builtin.copy:
+    src: tmp/
+    dest: ~/.tmp

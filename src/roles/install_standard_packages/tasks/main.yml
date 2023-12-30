@@ -1,0 +1,18 @@
+---
+#tasks file for install_zellij
+- name: "Check if {{ app_name }} is already installed"
+  command: "{{ app_name }} --version"
+  ignore_errors: true
+  register: version_check
+
+- name: "Install {{ app_name }} on macOS"
+  homebrew:
+    name: "{{ app_name }}"
+    state: present
+  when: ansible_os_family == "Darwin" and version_check is failed
+
+- name: "Install {{ app_name }} on Debian/Ubuntu"
+  apt:
+    name: "{{ app_name }}"
+    state: present
+  when: ansible_os_family == "Debian" and version_check is failed

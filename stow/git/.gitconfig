@@ -1,0 +1,36 @@
+[init]
+  defaultBranch = main
+[core]
+  editor = code --wait --new-window
+  excludesfile = /Users/samibistee/.gitignore_global
+  autocrlf = input
+[diff]
+  tool = vscode
+[difftool "vscode"]
+  cmd = code --wait --diff $LOCAL $REMOTE
+[merge]
+  tool = vscode
+[mergetool "vscode"]
+  cmd = code --wait $MERGED
+[difftool "sourcetree"]
+  cmd = opendiff "$LOCAL" "$REMOTE"
+  path =
+[mergetool "sourcetree"]
+  cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh "$LOCAL" "$REMOTE" -ancestor "$BASE" -merge "$MERGED"
+    trustExitCode = true
+[include]
+    path = ~/.config/git/gitconfig.unsigned
+[includeIf "gitdir:~/src/private/"]
+    path = ~/.config/git/gitconfig.personal
+[includeIf "gitdir:/Volumes/sami_ts/src/private/"]
+    path = ~/.config/git/gitconfig.personal
+[includeIf "gitdir:~/src/orangit/"]
+    path = ~/.config/git/gitconfig.orangit
+[includeIf "gitdir:/Volumes/sami_ts/src/orangit/"]
+    path = ~/.config/git/gitconfig.orangit
+[includeIf "gitdir:~/src/customer/"]
+    path = ~/.config/git/gitconfig.customer
+[includeIf "gitdir:/Volumes/sami_ts/src/customer/"]
+    path = ~/.config/git/gitconfig.customer
+[includeIf "gitdir:/Volumes/sami_ts/src/assigment/"]
+    path = ~/.config/git/gitconfig.unsigned

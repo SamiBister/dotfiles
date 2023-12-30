@@ -1,0 +1,28 @@
+---
+- name: Create .ssh directory
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.ssh"
+    state: directory
+    mode: "0700"
+  ignore_errors: yes
+
+- name: Generate SSH Configuration
+  template:
+    src: ssh_config.j2
+    dest: ~/.ssh/config # If needed to write to the user's home directory
+  vars:
+    accounts: "{{ ssh_accounts }}"
+  when: ssh_accounts | length > 0  # Only generate the SSH config if there are accounts
+
+- name: Create SSH key files
+  copy:
+    dest: "{{ ansible_env.HOME }}/.ssh/{{ item.name }}"
+    content: "{{ item.content }}"
+  with_items: "{{ ssh_keys }}"
+
+- name: Set correct mode
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.ssh/{{ item.name }}"
+    state: touch
+    mode: "{{ item.mode }}"
+  with_items: "{{ ssh_keys }}"

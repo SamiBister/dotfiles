@@ -1,0 +1,11 @@
+---
+# tasks file for install-p10k
+
+- name: Clone powerlevel10k repository
+  shell: git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
+- name: Configure p10k
+  ansible.builtin.copy:
+    src: p10k.zsh
+    dest: ~/.p10k.zsh
+    force: yes

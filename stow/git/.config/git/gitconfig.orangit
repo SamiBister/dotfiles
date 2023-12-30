@@ -1,0 +1,10 @@
+[init]
+  defaultBranch = main
+
+[commit]
+  gpgsign = true
+
+[user]
+  name = Sami Bister (OrangIT)
+  email = sami.bister@orangit.fi
+  signingKey = EF730B612414B10E

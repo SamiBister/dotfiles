@@ -1,0 +1,13 @@
+---
+# Variables for the virtual mac
+homebrew_cask_apps:
+  - docker
+  - firefox
+  - google-chrome
+  - visual-studio-code
+  - iterm2
+  - utm
+  - slack
+  - 1password
+  - 1password-cli
+  - drawio

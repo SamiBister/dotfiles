@@ -1,0 +1,18 @@
+---
+# tasks file for setup_git
+
+# Crete global gitignore file for preventing irrelevant file in git
+
+- name: Create global gitingore file
+  copy:
+    dest: .gitignore_global
+    content: "{{ git_global_ignore }}"
+
+# Create the structuted gitconfigs
+
+- name: Create structured git config files
+  copy:
+    dest: "~/{{ item.path }}"
+    content: "{{ item.content }}"
+    force: yes
+  with_items: "{{ git_configs }}"

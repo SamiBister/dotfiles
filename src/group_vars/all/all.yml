@@ -1,0 +1,255 @@
+---
+mac_user: "{{ ansible_env.USER }}"
+standard_install_packages:
+  - neovim
+  - pandoc
+  - tmux
+  - git
+  - fzf
+  - gnupg
+  - node
+  - tree-sitter
+  - pyenv
+  - tree
+  - pipenv
+  - poetry
+  - pinentry-mac
+  - zellij
+  - fd
+
+homebrew_cask_packages:
+  - docker
+  - firefox
+  - utm
+  - slack
+  - 1password
+
+# homebrew_cask_apps:
+#   - docker
+#   - firefox
+#   - google-chrome
+#   - visual-studio-code
+#   - iterm2
+#   - utm
+#   - slack
+#   - 1password
+#   - 1password-cli
+#   - drawio
+
+users:
+  - username: "{{ ansible_env.USER }}"
+    oh_my_zsh:
+      theme: gnzh
+      plugins:
+        - git
+        - zsh-syntax-highlighting
+        - zsh-autosuggestions
+        - docker
+        - kubectl
+        - helm
+        - pyenv
+        - vscode
+        - fzf-zsh-plugin
+
+directories_to_create:
+  - name: git_customers
+    path: ~/src/orangit
+  - name: git_private
+    path: ~/src/private
+  - name: reporting
+    path: ~/orangit/reporting
+  - name: tmp
+    path: ~/.tmp
+  - name: zsh
+    path: ~/.zsh
+
+# Gitignore to prevent irrelevant files
+git_global_ignore: |
+  # Created by https://www.toptal.com/developers/gitignore/api/macos,linux,windows,visualstudiocode
+  # Edit at https://www.toptal.com/developers/gitignore?templates=macos,linux,windows,visualstudiocode
+
+  ### Linux ###
+  *~
+
+  # temporary files which can be created if a process still has a handle open of a deleted file
+  .fuse_hidden*
+
+  # KDE directory preferences
+  .directory
+
+  # Linux trash folder which might appear on any partition or disk
+  .Trash-*
+
+  # .nfs files are created when an open file is removed but is still being accessed
+  .nfs*
+
+  ### macOS ###
+  # General
+  .DS_Store
+  .AppleDouble
+  .LSOverride
+
+  # Icon must end with two \r
+  Icon
+
+
+  # Thumbnails
+  ._*
+
+  # Files that might appear in the root of a volume
+  .DocumentRevisions-V100
+  .fseventsd
+  .Spotlight-V100
+  .TemporaryItems
+  .Trashes
+  .VolumeIcon.icns
+  .com.apple.timemachine.donotpresent
+
+  # Directories potentially created on remote AFP share
+  .AppleDB
+  .AppleDesktop
+  Network Trash Folder
+  Temporary Items
+  .apdisk
+
+  ### macOS Patch ###
+  # iCloud generated files
+  *.icloud
+
+  ### VisualStudioCode ###
+  .vscode/*
+  !.vscode/settings.json
+  !.vscode/tasks.json
+  !.vscode/launch.json
+  !.vscode/extensions.json
+  !.vscode/*.code-snippets
+
+  # Local History for Visual Studio Code
+  .history/
+
+  # Built Visual Studio Code Extensions
+  *.vsix
+
+  ### VisualStudioCode Patch ###
+  # Ignore all local history of files
+  .history
+  .ionide
+
+  ### Windows ###
+  # Windows thumbnail cache files
+  Thumbs.db
+  Thumbs.db:encryptable
+  ehthumbs.db
+  ehthumbs_vista.db
+
+  # Dump file
+  *.stackdump
+
+  # Folder config file
+  [Dd]esktop.ini
+
+  # Recycle Bin used on file shares
+  $RECYCLE.BIN/
+
+  # Windows Installer files
+  *.cab
+  *.msi
+  *.msix
+  *.msm
+  *.msp
+
+  # Windows shortcuts
+  *.lnk
+
+  # End of https://www.toptal.com/developers/gitignore/api/macos,linux,windows,visualstudiocode
+
+# gitconfig files to create structured configuration allowing multiple git profiles
+
+git_configs:
+  - name: gitconfig
+    path: .gitconfig
+    content: |
+      [init]
+        defaultBranch = main
+      [core]
+        editor = code --wait --new-window
+        excludesfile = /Users/samibistee/.gitignore_global
+        autocrlf = input
+      [diff]
+        tool = vscode
+      [difftool "vscode"]
+        cmd = code --wait --diff $LOCAL $REMOTE
+      [merge]
+        tool = vscode
+      [mergetool "vscode"]
+        cmd = code --wait $MERGED
+      [difftool "sourcetree"]
+        cmd = opendiff "$LOCAL" "$REMOTE"
+        path =
+      [mergetool "sourcetree"]
+        cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh "$LOCAL" "$REMOTE" -ancestor "$BASE" -merge "$MERGED"
+          trustExitCode = true
+      [include]
+          path = ~/.gitconfig.unsigned
+      [includeIf "gitdir:~/src/private/"]
+          path = ~/.gitconfig.personal
+      [includeIf "gitdir:/Volumes/sami_ts/src/private/"]
+          path = ~/.gitconfig.personal
+      [includeIf "gitdir:~/src/orangit/"]
+          path = ~/.gitconfig.orangit
+      [includeIf "gitdir:/Volumes/sami_ts/src/orangit/"]
+          path = ~/.gitconfig.orangit
+      [includeIf "gitdir:~/src/customer/"]
+          path = ~/.gitconfig.customer
+      [includeIf "gitdir:/Volumes/sami_ts/src/customer/"]
+          path = ~/.gitconfig.customer
+      [includeIf "gitdir:/Volumes/sami_ts/src/assigment/"]
+          path = ~/.gitconfig.unsigned
+  - name: gitconfig.customer
+    path: .gitconfig.customer
+    content: |
+      [init]
+        defaultBranch = main
+
+      [commit]
+        gpgsign = true
+
+      [user]
+        name = Sami Bister (OrangIT)
+        email = sami.bister@orangit.fi
+        signingKey = EF730B612414B10E
+  - name: gitconfig.orangit
+    path: .gitconfig.orangit
+    content: |
+      [init]
+        defaultBranch = main
+
+      [commit]
+        gpgsign = true
+
+      [user]
+        name = Sami Bister (OrangIT)
+        email = sami.bister@orangit.fi
+        signingKey = EF730B612414B10E
+  - name: gitconfig.personal
+    path: .gitconfig.personal
+    content: |
+      [init]
+        defaultBranch = main
+
+      [commit]
+        gpgsign = true
+
+      [user]
+        name = Sami Bister
+        email = 33483005+SamiBister@users.noreply.github.com
+        signingKey = 16D849D9EBCDAE61
+  - name: gitconfig.unsigned
+    path: .gitconfig.unsigned
+    content: |
+      [init]
+        defaultBranch = main
+
+      [user]
+        name = Sami Bister
+        email = sami.bister@orangit.fi

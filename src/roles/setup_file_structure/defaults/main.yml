@@ -1,0 +1,7 @@
+---
+# defaults file for setup_file_structure
+directories_to_create:
+  - name: foo
+    path: src/foo
+  - name: bar
+    path: bar

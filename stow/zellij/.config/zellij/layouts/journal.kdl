@@ -1,0 +1,19 @@
+layout {
+    tab name="Journal" cwd="/Users/samibister/Dropbox/src/own/journal" {
+    pane size=1 borderless=true {
+            plugin location="zellij:tab-bar"
+        }
+    pane command="nvim" {
+        args "."
+    }
+    pane split_direction="horizontal" size="25%" {
+        pane split_direction="vertical" {
+            pane
+            pane
+        }
+    }
+    pane size=2 borderless=true {
+        plugin location="zellij:status-bar"
+    }
+   }
+}

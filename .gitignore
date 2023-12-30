@@ -553,5 +553,10 @@ FodyWeavers.xsd
 
 ### VisualStudio Patch ###
 # Additional files built by Visual Studio
+#
+
+### Custom
+*.ignore
+*.pass
 
 # End of https://www.toptal.com/developers/gitignore/api/fish,zsh,macos,linux,windows,visualstudio,visualstudiocode,vim,dotnetcore

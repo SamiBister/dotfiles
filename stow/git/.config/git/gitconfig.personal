@@ -1,0 +1,18 @@
+[init]
+  defaultBranch = main
+
+[commit]
+  gpgsign = true
+
+[user]
+  name = Sami Bister
+  email = 33483005+SamiBister@users.noreply.github.com
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGvopnsR9dlUpc/hyUjOmEd4MlkofFxfUN08l52j24MK
+
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+

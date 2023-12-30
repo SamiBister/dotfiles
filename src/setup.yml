@@ -1,0 +1,23 @@
+---
+# Playbook for general installation
+
+- name: Setup the machine for Sami Bister
+  hosts: all
+  roles:
+    - install_gitleaks
+  tasks:
+    # Installation that can be found on regular homebrew on MacOs
+    - name: Installa standard packages
+      include_role:
+        name: install_standard_packages
+      vars:
+        app_name: "{{ item }}"
+      loop: "{{ standard_install_packages }}"
+
+    # Installing the packages that need cask operator in homebrew
+    - name: Installa cask packages
+      include_role:
+        name: install_cask_packages
+      vars:
+        app_name: "{{ item }}"
+      loop: "{{ homebrew_cask_packages }}"

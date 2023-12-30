@@ -1,0 +1,11 @@
+---
+# vars file for install_oh_my_zsh
+# users:
+#     - username: {{ mac_user }}
+#       oh_my_zsh:
+#         theme: gnzh
+#         plugins:
+#           - git
+#           - zsh-syntax-highlighting
+#           - zsh-autosuggestions
+#           - docker

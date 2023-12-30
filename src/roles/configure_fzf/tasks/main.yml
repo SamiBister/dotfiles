@@ -1,0 +1,19 @@
+---
+# tasks file for configure-fzf
+- name: Configure fzf completion
+  ansible.builtin.copy:
+    src: completion.zsh
+    dest: /opt/homebrew/opt/fzf/shell/completion.zsh
+    force: yes
+
+- name: Configure fzf keybindings
+  ansible.builtin.copy:
+    src: key-bindings.zsh
+    dest: /opt/homebrew/opt/fzf/shell/key-bindings.zsh
+    force: yes
+
+- name: Configure fzf
+  ansible.builtin.copy:
+    src: fzf.zsh
+    dest: ~/.fzf.zsh
+    force: yes

@@ -1,0 +1,13 @@
+alias convert_kk_rapsa="convert_kk_rapsa"
+alias shell_reload="source ~/.zshrc"
+alias fzff="fzf --preview 'cat {}'"
+alias fzfd="find . -type d | fzf --preview='tree -C {} | head -n 50'"
+alias v='nvim' # default Neovim config
+alias vz='NVIM_APPNAME=nvim-lazynvim nvim' # LazyVim
+alias vc='NVIM_APPNAME=nvim-nvchad nvim' # NvChad
+alias vk='NVIM_APPNAME=nvim-kickstart nvim' # Kickstart
+alias vs='NVIM_APPNAME=nvim-starter-kit nvim'
+alias va='NVIM_APPNAME=nvim-astrovim nvim' # AstroVim
+alias vl='NVIM_APPNAME=nvim-lunarvim nvim' # LunarVim
+alias vj='NVIM_APPNAME=nvim-josean nvim' # LunarVim
+alias vsbi='NVIM_APPNAME=nvim-lazy-sbi nvim'

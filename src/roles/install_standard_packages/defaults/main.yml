@@ -1,0 +1,11 @@
+---
+# defaults file for install_zellij
+
+# Configuration folder
+generaal_config_path: .config
+# application name
+app_name: zellij
+# Application configuration directory
+app_config: "{{ generaal_config_path }}/{{ app_name}}"
+# Source directory of the files for configuration
+source_dir: "{{ app_name}}/"

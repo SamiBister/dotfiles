@@ -1,0 +1,6 @@
+{% for account in accounts %}
+Host {{ account.host_alias }}
+    HostName {{ account.host_name }}
+    User {{ account.ssh_user }}
+    IdentityFile {{ account.ssh_key_path }}
+{% endfor %}

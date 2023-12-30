@@ -1,0 +1,7 @@
+---
+# tasks file for setup_gpg
+- name: Copy gpg files
+  copy:
+    dest: "{{ ansible_env.HOME }}/.tmp/{{ item.name }}"
+    content: "{{ item.content }}"
+  with_items: "{{ gpg_keys }}"

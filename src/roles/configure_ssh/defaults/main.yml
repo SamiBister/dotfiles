@@ -1,0 +1,20 @@
+# ---
+ssh_accounts:
+  - host_alias: github.com
+    host_name: github.com
+    ssh_user: git
+    ssh_key_path: ~/.ssh/id_rsa
+  - host_alias: github-sbi
+    host_name: github.com
+    ssh_user: git
+    ssh_key_path: ~/.ssh/id_rsa_personal
+
+ssh_keys:
+  - name: id_rsa
+    content: |
+      -----BEGIN OPENSSH PRIVATE KEY-----
+      
+      -----END OPENSSH PRIVATE KEY-----
+  - name: id_rsa.pub
+    content: |
+      ssh-rsa AAAAB3NzaC1yc2EAAAAD

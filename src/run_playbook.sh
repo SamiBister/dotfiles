@@ -1,0 +1,1 @@
+op read op://personal/macsetup-ansible-vault/password --no-newline >passfile.pass && ansible-playbook -i inventory/inventory.ini -e ansible_become_pass $(op readop://personal/Macbook16/password --no-newline) --vault-password-file passfile.pass setup.yml -vvv && rm passfile.pass

@@ -1,0 +1,10 @@
+---
+ssh_accounts:
+  - host_alias: github.com
+    host_name: github.com
+    ssh_user: git
+    ssh_key_path: ~/.ssh/id_rsa
+  - host_alias: github-sbi
+    host_name: github.com
+    ssh_user: git
+    ssh_key_path: ~/.ssh/id_rsa_personal

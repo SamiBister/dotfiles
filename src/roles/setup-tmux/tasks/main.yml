@@ -1,0 +1,32 @@
+---
+# tasks file for setup-tmux
+
+# install Tmux Plugin Manager from GitHub
+# - name: Install Tmux Plugin Manage
+#   get_url:
+#
+- name: Check if the directory  ~/.tmux/plugins/tpm exists
+  stat:
+    path:  ~/.tmux/plugins/tpm # Specify the directory path
+  register: directory_status
+
+- name: Create the directory  ~/.tmux/plugins/tpm if it doesn't exist
+  file:
+    path:  ~/.tmux/plugins/tpm  # Specify the directory path
+    state: directory
+  when: not directory_status.stat.exists
+
+- name: Check if the file exists
+  stat:
+    path: ~/.tmux/plugins/tpm/README.md  # Specify the path to the file you want to check
+  register: file_info
+
+- name: Execute a shell command if the file does not exist
+  command:  git clone https://github.com/tmux-plugins/tpm.git ~/.tmux/plugins/tpm
+  when: not file_info.stat.exists
+
+- name: Configure tmux
+  ansible.builtin.copy:
+    src: tmux.conf
+    dest: ~/.tmux.conf
+    force: yes

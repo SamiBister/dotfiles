@@ -1,0 +1,18 @@
+---
+#tasks file for install_zellij
+- name: "Check if {{ app_name }} is already installed"
+  ansible.builtin.stat:
+    path: "/Applications/{{ app_name }}.app"
+  register: file_stat
+
+- name: "Install {{ app_name }} on macOS"
+  homebrew:
+    name: "homebrew/cask/{{ app_name }}"
+    state: present
+  when: ansible_os_family == "Darwin" and not file_stat.stat.exists
+
+- name: "Install {{ app_name }} on Debian/Ubuntu"
+  apt:
+    name: "{{ app_name }}"
+    state: present
+  when: ansible_os_family == "Debian" and not file_stat.stat.exists
