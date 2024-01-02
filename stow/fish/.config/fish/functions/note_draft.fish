@@ -1,4 +1,4 @@
-function draft
+function note_draft
     set year (date +%Y)
     set month (date +%m)
     set day (date +%d)

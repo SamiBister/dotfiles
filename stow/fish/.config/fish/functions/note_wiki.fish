@@ -1,4 +1,4 @@
-function wiki
+function note_wiki
     set basedirectory "$HOME/notes/wiki"
     set subject $argv[2]
     set class $argv[1]

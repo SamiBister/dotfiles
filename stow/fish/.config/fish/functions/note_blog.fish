@@ -1,4 +1,4 @@
-function blog
+function note_blog
     set year (date +%Y)
     set month (date +%m)
     set day (date +%d)
